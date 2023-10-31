@@ -132,6 +132,8 @@ export default function ProfilePage() {
                         boxShadow: "none",
                         borderRadius: "10px",
                         transition: ".3s",
+                        textTransform: "capitalize",
+                        fontWeight: 600,
                     },
                 },
             },
@@ -375,7 +377,7 @@ export default function ProfilePage() {
                                             >
                                                 <EditIcon/>
                                             </IconButton>
-                                            <IconButton
+                                            <Button
                                                 className={"redButton"}
                                                 size="large"
                                                 onClick={() => handleDelete(item.id)}
@@ -384,7 +386,7 @@ export default function ProfilePage() {
                                                 }}
                                             >
                                                 Delete
-                                            </IconButton>
+                                            </Button>
                                         </Box>
                                     </CardContent>
                                 </Card>

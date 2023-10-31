@@ -66,6 +66,8 @@ const theme = createTheme({
           boxShadow: "none",
           borderRadius: "10px",
           transition: ".3s",
+          textTransform: "capitalize",
+          fontWeight: 600,
         },
       },
     },
