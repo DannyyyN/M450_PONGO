@@ -213,6 +213,7 @@ const Router = () => {
                                 boxSizing: "border-box",
                             },
                         }}
+                        id={"drawer"}
                         variant="persistent"
                         anchor="left"
                         open={open}
@@ -253,6 +254,7 @@ const Router = () => {
                         <Button
                             className={"userButton secondaryButton"}
                             color="info"
+
                             variant="contained"
                             sx={{
                                 mx: 0.5,
