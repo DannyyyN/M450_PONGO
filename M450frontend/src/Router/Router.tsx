@@ -156,6 +156,7 @@ const Router = () => {
                     >
                         <Toolbar sx={{flexGrow: 1, justifyContent: "space-between"}}>
                             <IconButton
+                                className={"openDrawer"}
                                 color="inherit"
                                 aria-label="open drawer"
                                 onClick={handleDrawerOpen}
@@ -213,13 +214,12 @@ const Router = () => {
                                 boxSizing: "border-box",
                             },
                         }}
-                        id={"drawer"}
                         variant="persistent"
                         anchor="left"
                         open={open}
                     >
                         <DrawerHeader>
-                            <IconButton onClick={handleDrawerClose}>
+                            <IconButton onClick={handleDrawerClose} id={"drawer"}>
                                 {theme.direction === "ltr" ? (
                                     <ChevronLeftIcon/>
                                 ) : (

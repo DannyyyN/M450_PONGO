@@ -383,7 +383,7 @@ export default function ProfilePage() {
                                                     ml: 1,
                                                 }}
                                             >
-                                                <DeleteIcon/>
+                                                Delete
                                             </IconButton>
                                         </Box>
                                     </CardContent>

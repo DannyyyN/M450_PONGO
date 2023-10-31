@@ -318,13 +318,13 @@ const ItemTable = () => {
                             </Typography>
                           </Paper>
                           <Box mt={1}>
-                            <IconButton
+                            <Button
                                 className={"blueButton"}
                                 size="large"
                                 onClick={() => handleEdit(item.id)}
                             >
-                              <EditIcon />
-                            </IconButton>
+                              Edit
+                            </Button>
                             <IconButton
                                 className={"redButton"}
                                 size="large"
