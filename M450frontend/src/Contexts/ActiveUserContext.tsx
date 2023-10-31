@@ -122,6 +122,7 @@ export const ActiveUserContextProvider = ({
     api.get("/logout").finally(resetAuthorization);
     //navigate to login page
     navigate("/login");
+    window.location.reload();
   };
 
   /**
