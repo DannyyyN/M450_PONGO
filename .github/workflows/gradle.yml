@@ -33,3 +33,4 @@ jobs:
       - name: Generate Test Reports
         run: |
           ./gradlew test
+          # You can add more commands to generate reports as needed
