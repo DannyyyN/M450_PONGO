@@ -1,17 +1,14 @@
 package com.example.demo.domain.shoppingcart;
 
-import com.example.demo.domain.shoppingcart.ShoppingCart;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class ShoppingCartTest {
+class ShoppingCartTest {
 
     @Test
-    public void shoppingCartInitializationTest() {
-        // Arrange & Act
+    void shoppingCartInitializationTest() {
         ShoppingCart shoppingCart = new ShoppingCart();
 
-        // Assert
         assertNotNull(shoppingCart.getCartItems());
     }
 }
