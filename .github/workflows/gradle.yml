@@ -27,12 +27,12 @@ jobs:
           architecture: x64
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ../../M450backend/gradlew build
 
       - name: Test with Gradle
-        run: ./gradlew test
+        run: ../../M450backend/gradlew test
 
       - name: Generate Test Reports
         run: |
-          ./gradlew test
+          ../../M450backend/gradlew test
           # You can add more commands to generate reports as needed
