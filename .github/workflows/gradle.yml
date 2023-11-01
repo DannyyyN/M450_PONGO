@@ -28,10 +28,12 @@ jobs:
 
       - name: Build with Gradle
         run: |
+          chmod +x gradlew
           cd M450backend
           ./gradlew build
 
       - name: Test with Gradle
         run: |
+          chmod +x gradlew
           cd M450backend
           ./gradlew test
