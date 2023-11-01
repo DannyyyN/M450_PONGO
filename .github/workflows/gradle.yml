@@ -28,15 +28,10 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          cd ../../M450backend/
+          cd M450backend
           ./gradlew build
 
       - name: Test with Gradle
         run: |
-          cd ../../M450backend/
+          cd M450backend
           ./gradlew test
-
-      - name: Generate Test Reports
-        run: |
-          cd ../../M450backend/
-          .gradlew test
