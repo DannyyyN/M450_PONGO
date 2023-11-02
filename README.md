@@ -25,5 +25,7 @@ Can be viewed in Actions Tab
 
 ### Documentation Project
 
+Is located in the root Folder.
+
 <object data="M450_PONGO.pdf" type="application/pdf" width="100%"> 
 </object>
