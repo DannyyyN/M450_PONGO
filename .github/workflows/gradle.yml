@@ -37,14 +37,3 @@ jobs:
           cd M450backend
           chmod +x gradlew
           ./gradlew test
-      - name: Build with Gradle
-        run: |
-          cd M450backend
-          chmod +x gradlew
-          ./gradlew build
-
-      - name: Test with Gradle
-        run: |
-          cd M450backend
-          chmod +x gradlew
-          ./gradlew test
