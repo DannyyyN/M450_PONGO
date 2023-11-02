@@ -24,7 +24,9 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+      - name: Checkout Repository
       - uses: actions/checkout@v2
+
 
       # Backend steps
       - name: Set up JDK 16
@@ -48,12 +50,11 @@ jobs:
         env:
           SPRING_PROFILES_ACTIVE: test
 
-      # Start Backend Service (adjust as needed)
       - name: Start Backend Service
         run: |
           cd M450backend
           ./gradlew bootRun &
-          sleep 60 # Give some time for the server to start
+          sleep 20 # Give some time for the server to start
 
       # Frontend steps
       - name: Set up Node.js
