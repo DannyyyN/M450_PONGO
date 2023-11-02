@@ -3,7 +3,6 @@ import { defineConfig } from "cypress";
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // Implement custom Node event listeners here
       on("before:run", (details) => {
         // Add custom logic to run before the tests start
       });
@@ -13,4 +12,8 @@ export default defineConfig({
       });
     },
   },
+  env: {
+    BASE_URL: "http://localhost:3000",
+    API_URL: "http://localhost:8080"
+  }
 });

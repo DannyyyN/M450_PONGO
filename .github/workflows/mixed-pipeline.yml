@@ -79,3 +79,6 @@ jobs:
           start: yarn start
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
+          env: # Pass environment variables to Cypress
+            CYPRESS_BASE_URL: 'http://localhost:3000'
+            CYPRESS_API_URL: 'http://localhost:8080'
