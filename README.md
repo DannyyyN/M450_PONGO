@@ -15,3 +15,15 @@ Clone the project to your local environment. Then, before trying to run the back
 
 After starting the database container, open the "M450backend" project in Intellij and run the app with the ```bootRun``` option or the main class ```DemoApplication```. 
 
+### CI/CD
+
+Can be viewed in Actions Tab
+
+### Code Coverage JUnit 5
+
+![JUnit 5 Code Coverage](Code-Coverage JUnit5.png)  
+
+### Documentation Project
+
+<object data="M450_PONGO.pdf" type="application/pdf" width="100%"> 
+</object>
