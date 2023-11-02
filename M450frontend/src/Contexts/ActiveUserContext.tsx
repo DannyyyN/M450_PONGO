@@ -76,8 +76,13 @@ export const ActiveUserContextProvider = ({
    */
   const loadSavedUserData = (): Nullable<User> => {
     const storeUser = localStorage.getItem(USER_DATA_LOCAL_STORAGE_KEY);
-    if (storeUser === null) return null;
-    return JSON.parse(storeUser);
+    if (!storeUser || storeUser === "undefined") return null;
+    try {
+      return JSON.parse(storeUser);
+    } catch (e) {
+      console.error("Error parsing stored user data:", e);
+      return null;
+    }
   };
 
   // The following line defines the user state which is holding the user

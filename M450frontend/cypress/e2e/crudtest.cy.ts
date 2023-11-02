@@ -10,11 +10,14 @@ Cypress.Commands.add('login', () => {
       password: '1234',
     },
   }).then((response) => {
+    console.log(response);  // Log the response to inspect it
     // Extract and save the token and user data from the response
     const { token, user } = response.body;
     window.localStorage.setItem('token', 'Bearer ${token}');
     window.localStorage.setItem('user', JSON.stringify(user));
   });
+  cy.window().its('localStorage').invoke('getItem', 'token').should('include', 'Bearer');
+  cy.window().its('localStorage').invoke('getItem', 'user').should('not.be.null');
 });
 
 beforeEach(() => {
@@ -35,7 +38,6 @@ describe('Login', () => {
   });
 });
 describe('CRUD', () => {
-
   it('Creates an item', () => {
     cy.visit(`${Cypress.env('BASE_URL')}/profile`);
 
@@ -52,8 +54,8 @@ describe('CRUD', () => {
     cy.visit(`${Cypress.env('BASE_URL')}/item`);
     cy.reload();
   });
-
   it('See all profiles', () => {
+
     cy.visit(`${Cypress.env('BASE_URL')}/profile`);
 
     cy.contains('Welcome');
@@ -70,6 +72,7 @@ describe('CRUD', () => {
   });
 
   it('Edit an item', () => {
+
     cy.visit(`${Cypress.env('BASE_URL')}/profile`);
 
     cy.contains('Welcome');
@@ -91,6 +94,7 @@ describe('CRUD', () => {
   });
 
   it('Delete an item', () => {
+
     cy.visit(`${Cypress.env('BASE_URL')}/profile`);
 
     cy.contains('Welcome');
