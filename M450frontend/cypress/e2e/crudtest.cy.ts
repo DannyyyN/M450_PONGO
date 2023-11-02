@@ -1,10 +1,11 @@
 // @ts-ignore
 
+// @ts-ignore
 Cypress.Commands.add('login', () => {
   // Send a login request
   cy.request({
     method: 'POST',
-    url: `${Cypress.env('API_URL')}/user/login`, // Adjust the URL to match your login endpoint
+    url: `${Cypress.env('API_URL')}/user/login`,
     body: {
       email: 'admin@example.com',
       password: '1234',
@@ -13,7 +14,7 @@ Cypress.Commands.add('login', () => {
     console.log(response);  // Log the response to inspect it
     // Extract and save the token and user data from the response
     const { token, user } = response.body;
-    window.localStorage.setItem('token', 'Bearer ${token}');
+    window.localStorage.setItem('token', `Bearer ${token}`);  // Use backticks here
     window.localStorage.setItem('user', JSON.stringify(user));
   });
   cy.window().its('localStorage').invoke('getItem', 'token').should('include', 'Bearer');
