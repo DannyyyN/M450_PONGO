@@ -18,7 +18,8 @@ describe('Login, Logout & CRUD', () => {
     cy.get('input[id=email]').type('admin@example.com');
     cy.get('input[id=password]').type('1234');
     cy.get('[id=signIn]').click();
-    cy.visit('http://localhost:3000/profile')
+    cy.visit('http://localhost:3000/profile');
+    cy.reload();
   });
 
   it('Creates an item', () => {
@@ -34,7 +35,8 @@ describe('Login, Logout & CRUD', () => {
     cy.get('input[id=description]').type('Aryan style phone');
     cy.get('input[id=price]').type('800');
     cy.contains('Finish').click();
-    cy.visit('http://localhost:3000/item')
+    cy.visit('http://localhost:3000/item');
+    cy.reload();
   });
 
   it('See all profiles', () => {
@@ -45,6 +47,8 @@ describe('Login, Logout & CRUD', () => {
     cy.contains('Articles').click();
 
     cy.visit('http://localhost:3000/item');
+
+    cy.reload();
 
     cy.contains('Aryan Phone');
     cy.contains('Back').click();
@@ -60,6 +64,8 @@ describe('Login, Logout & CRUD', () => {
 
     cy.visit('http://localhost:3000/item');
 
+    cy.reload();
+
     cy.contains('Aryan Phone').click();
     cy.contains('Edit').click({ multiple: true });
     cy.get('input[id=name]').clear().type('Arbon Phone');
@@ -74,6 +80,9 @@ describe('Login, Logout & CRUD', () => {
     cy.visit('http://localhost:3000/profile');
 
     cy.contains('Welcome');
+
+    cy.reload();
+
     cy.contains('Delete').click({ multiple: true })
 
   });
