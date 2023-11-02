@@ -9,7 +9,7 @@ beforeEach(() => {
   cy.login()
 });
 
-describe('Login, Logout & CRUD', () => {
+describe('Login', () => {
   it('Visits the login page', () => {
     cy.visit('http://localhost:3000/login/');
 
@@ -21,6 +21,8 @@ describe('Login, Logout & CRUD', () => {
     cy.visit('http://localhost:3000/profile');
     cy.reload();
   });
+});
+describe('CRUD', () => {
 
   it('Creates an item', () => {
     cy.visit('http://localhost:3000/profile');
@@ -67,7 +69,7 @@ describe('Login, Logout & CRUD', () => {
     cy.reload();
 
     cy.contains('Aryan Phone').click();
-    cy.contains('Edit').click({ multiple: true });
+    cy.contains('Edit').click({multiple: true});
     cy.get('input[id=name]').clear().type('Arbon Phone');
     cy.get('input[id=pictureURL]').clear().type('https://feinekekse.web.app/images/Aryan.jpg');
     cy.get('input[id=description]').clear().type('Arbon style phone');
@@ -76,18 +78,19 @@ describe('Login, Logout & CRUD', () => {
     cy.visit('http://localhost:3000/item')
   });
 
-  it ('Delete an item', () => {
+  it('Delete an item', () => {
     cy.visit('http://localhost:3000/profile');
 
     cy.contains('Welcome');
 
     cy.reload();
 
-    cy.contains('Delete').click({ multiple: true })
+    cy.contains('Delete').click({multiple: true})
 
   });
+});
 
-
+describe('Logout', () => {
   it('Logout', () => {
     cy.visit('http://localhost:3000/profile');
 
