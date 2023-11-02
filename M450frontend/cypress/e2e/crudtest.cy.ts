@@ -1,8 +1,20 @@
 // @ts-ignore
 
 Cypress.Commands.add('login', () => {
-  window.localStorage.setItem('token', "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYTgwNGNiOS1mYTE0LTQyYTUtYWZhZi1iZTQ4ODc0MmZjNTQiLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiVVNFUl9ERUxFVEUifSx7ImF1dGhvcml0eSI6IkRFRkFVTFQifSx7ImF1dGhvcml0eSI6IlVTRVJfTU9ESUZZIn1dLCJpYXQiOjE2OTg5MjU3ODksImV4cCI6MTY5OTAyNTc4OSwiaXNzIjoidWsyMjMifQ.KfG09BbRNn2xyKoJm04QCUN-IC9VRMdUMeuI9hBynXw");
-  window.localStorage.setItem('user', "{\"id\":\"ba804cb9-fa14-42a5-afaf-be488742fc54\",\"firstName\":\"James\",\"lastName\":\"Bond\",\"email\":\"admin@example.com\",\"password\":\"1234\",\"roles\":[{\"id\":\"c6aee32d-8c35-4481-8b3e-a876a39b0c02\",\"name\":\"USER_DELETE\",\"authorities\":[{\"id\":\"21c942db-a275-43f8-bdd6-d048c21bf5ab\",\"name\":\"USER_DELETE\"}]},{\"id\":\"d29e709c-0ff1-4f4c-a7ef-09f656c390f1\",\"name\":\"DEFAULT\",\"authorities\":[{\"id\":\"2ebf301e-6c61-4076-98e3-2a38b31daf86\",\"name\":\"DEFAULT\"}]},{\"id\":\"ab505c92-7280-49fd-a7de-258e618df074\",\"name\":\"USER_MODIFY\",\"authorities\":[{\"id\":\"76d2cbf6-5845-470e-ad5f-2edb9e09a868\",\"name\":\"USER_MODIFY\"}]}]}")
+  // Send a login request
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:8080/user/login', // Adjust the URL to match your login endpoint
+    body: {
+      email: 'admin@example.com',
+      password: '1234',
+    },
+  }).then((response) => {
+    // Extract and save the token and user data from the response
+    const { token, user } = response.body;
+    window.localStorage.setItem('token', `Bearer ${token}`);
+    window.localStorage.setItem('user', JSON.stringify(user));
+  });
 });
 
 beforeEach(() => {
