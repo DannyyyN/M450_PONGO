@@ -1,5 +1,4 @@
 // @ts-ignore
-import {cyan} from "@mui/material/colors";
 
 Cypress.Commands.add('login', () => {
   window.localStorage.setItem('token', "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiREVGQVVMVCJ9LHsiYXV0aG9yaXR5IjoiVVNFUl9ERUxFVEUifSx7ImF1dGhvcml0eSI6IlVTRVJfTU9ESUZZIn1dLCJzdWIiOiJiYTgwNGNiOS1mYTE0LTQyYTUtYWZhZi1iZTQ4ODc0MmZjNTQiLCJpYXQiOjE2OTg3NDI4MzgsImV4cCI6MTY5ODg0MjgzOCwiaXNzIjoidWsyMjMifQ.pFpWcdV1dcB-0d-BFaSwa4H6Wqtdpjk3klBKHF5b3A0");
