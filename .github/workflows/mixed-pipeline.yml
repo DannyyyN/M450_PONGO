@@ -1,0 +1,75 @@
+name: CI with Cypress and Gradle
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Backend steps
+      - name: Set up JDK 16
+        uses: actions/setup-java@v3
+        with:
+          java-version: 16
+          distribution: 'temurin'
+          architecture: x64
+
+      - name: Build and Test Backend with Gradle
+        run: |
+          cd M450backend
+          chmod +x gradlew
+          ./gradlew build test
+        env:
+          SPRING_PROFILES_ACTIVE: test
+
+      # Start Backend Service (adjust as needed)
+      - name: Start Backend Service
+        run: |
+          cd M450backend
+          ./gradlew bootRun &
+          sleep 60 # Give some time for the server to start
+
+      # Frontend steps
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: |
+          cd M450frontend
+          yarn install
+
+      - name: Build React App
+        run: |
+          cd M450frontend
+          yarn build
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          config-file: cypress.config.ts
+          working-directory: M450frontend
+          start: yarn start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
