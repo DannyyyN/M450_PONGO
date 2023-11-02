@@ -31,11 +31,6 @@ jobs:
           cd M450frontend
           yarn build
 
-      - name: Wait for Backend
-        run: |
-          yarn global add wait-on
-          wait-on http://backend-url:8080/health-check # Replace with your backend health check URL
-
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with:
