@@ -45,6 +45,7 @@
     "react-error-overlay": "6.0.9"
   },
   "scripts": {
+    "cypress:open": "cypress open --config-file=cypress.config.ts",
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
