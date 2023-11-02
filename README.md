@@ -23,6 +23,8 @@ Can be viewed in Actions Tab
 
 ![JUnit 5 Code Coverage](Code-Coverage JUnit5.png)  
 
+If not displayed correctly: Is located in the root folder.
+
 ### Documentation Project
 
 Is located in the root Folder.
