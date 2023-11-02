@@ -77,8 +77,8 @@ jobs:
           config-file: cypress.config.ts
           working-directory: M450frontend
           start: yarn start
-          wait-on: 'http://10.1.0.25:3000'  # Update this line
+          wait-on: 'http://localhost:3000'  # Update this line
           wait-on-timeout: 120
         env: # Pass environment variables to Cypress
-          CYPRESS_BASE_URL: 'http://10.1.0.25:3000'  # Update this line
+          CYPRESS_BASE_URL: 'http://localhost:3000'  # Update this line
           CYPRESS_API_URL: 'http://localhost:8080'
