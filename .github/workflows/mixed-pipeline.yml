@@ -34,11 +34,17 @@ jobs:
           distribution: 'temurin'
           architecture: x64
 
-      - name: Build and Test Backend with Gradle
+      - name: Build with Gradle
         run: |
           cd M450backend
           chmod +x gradlew
-          ./gradlew build test
+          ./gradlew build
+
+      - name: Test with Gradle
+        run: |
+          cd M450backend
+          chmod +x gradlew
+          ./gradlew test
         env:
           SPRING_PROFILES_ACTIVE: test
 
