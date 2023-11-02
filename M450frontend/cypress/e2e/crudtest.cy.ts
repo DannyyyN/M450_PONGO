@@ -2,23 +2,13 @@
 
 // @ts-ignore
 Cypress.Commands.add('login', () => {
-  // Send a login request
-  cy.request({
-    method: 'POST',
-    url: `${Cypress.env('API_URL')}/user/login`,
-    body: {
-      email: 'admin@example.com',
-      password: '1234',
-    },
-  }).then((response) => {
-    console.log(response);  // Log the response to inspect it
-    // Extract and save the token and user data from the response
-    const { token, user } = response.body;
-    window.localStorage.setItem('token', `Bearer ${token}`);  // Use backticks here
-    window.localStorage.setItem('user', JSON.stringify(user));
-  });
-  cy.window().its('localStorage').invoke('getItem', 'token').should('include', 'Bearer');
-  cy.window().its('localStorage').invoke('getItem', 'user').should('not.be.null');
+  cy.visit(`${Cypress.env('BASE_URL')}/login/`);
+  cy.contains('Sign In');
+  cy.get('input[id=email]').type('admin@example.com');
+  cy.get('input[id=password]').type('1234');
+  cy.get('[id=signIn]').click();
+  cy.visit(`${Cypress.env('BASE_URL')}/profile`);
+  cy.reload();
 });
 
 beforeEach(() => {
